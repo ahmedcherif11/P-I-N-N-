@@ -56,9 +56,9 @@ The PINN architecture combines:
 #### Loss Function
 1. **Data Loss**:
    Measures the difference between predicted (\( \hat{y} \)) and actual (\( y \)) trajectory points:
-   $$
+   \[
    \text{Data Loss} = \frac{1}{N} \sum_{i=1}^N \|\hat{y}_i - y_i\|^2
-   $$
+   \]
 
 2. **Physics Loss**:
    Ensures compliance with Newtonian mechanics:
