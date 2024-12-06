@@ -235,6 +235,24 @@ The true trajectory (red dotted line) and the PiNN predictions (blue solid line)
    git clone https://github.com/ahmedcherif11/Shuttlecock-Trajectory-Prediction-Using-Physics-Informed-Neural-Networks-PINNs.git
    ```
 2. Install dependencies:
+3.Open the Notebook: Open the PINN.ipynb file using Jupyter Notebook or google colab:
+```bash
+jupyter notebook PINN.ipynb
+```
+4.Modify Simulation Parameters (Optional): You can adjust the initial velocity and angle of projection to generate new data. For example:
+```python
+# Modify these parameters in the notebook
+data = generate_trajectory_data(v_0=40, theta=60)  # Initial velocity 40 m/s, angle 60 degrees
+```
+- v_0: Initial velocity of the shuttlecock in meters per second (default: 30 m/s).
+- theta: Angle of projection in degrees (default: 45°).
+5. Run the Notebook
+
+1. **Generate Data**: Simulate the shuttlecock's trajectory using physical parameters.  
+2. **Train on All Data**: Train the PiNN with the full dataset.  
+3. **Train on 20 Points**: Test the PiNN's efficiency with only 20 representative points.( you can change the number of points) 
+4. **Visualize Results**: Compare true and predicted trajectories, analyze loss curves, and evaluate accuracy.  
+
 
 ## Conclusion
 This project highlights the potential of Physics-Informed Neural Networks to predict the trajectory of objects governed by physical laws. Key takeaways include:
