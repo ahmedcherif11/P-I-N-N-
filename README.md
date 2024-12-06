@@ -39,3 +39,51 @@ A differential equation governs the shuttlecock's motion:
 
 
 ---
+## Architecture Design
+
+The PINN architecture combines:
+1. **Data-Driven Learning**: A neural network approximates the trajectory of the shuttlecock.
+2. **Physics-Informed Constraints**: Physical equations serve as regularization terms, ensuring predictions comply with Newtonian mechanics.
+   
+### Model Components
+- **Input**: Time ($t$)
+- **Output**:  $[x, y, v_x, v_y]$
+- **Structure**:
+  - 3 fully connected hidden layers with 256 neurons each
+  - Activation: Tanh function
+  - Output: 4 neurons representing the trajectory state
+
+#### Loss Function
+1. **Data Loss**:
+   Measures the difference between predicted (\( \hat{y} \)) and actual (\( y \)) trajectory points:
+   $$
+   \text{Data Loss} = \frac{1}{N} \sum_{i=1}^N \|\hat{y}_i - y_i\|^2
+   $$
+
+2. **Physics Loss**:
+   Ensures compliance with Newtonian mechanics:
+   \[
+   \text{Physics Loss} = \| a_x - f_x \|^2 + \| a_y - f_y \|^2
+   \]
+   where:
+   - \( a_x, a_y \): Predicted accelerations (second derivatives computed via autograd).
+   - \( f_x, f_y \): Forces acting on the shuttlecock:
+     \[
+     f_x = -C_d \cdot v \cdot v_x, \quad f_y = -g - C_d \cdot v \cdot v_y
+     \]
+   - \( C_d \): Drag coefficient, \( g \): Gravity, \( v \): Speed magnitude.
+
+3. **Total Loss**:
+   Combines data and physics losses with a regularization term (\( \lambda_\text{reg} \)):
+   \[
+   \text{Total Loss} = \text{Data Loss} + \lambda_\text{reg} \cdot \text{Physics Loss}
+   \]
+
+### Integration of Physical Loss
+- **Design Rationale**:
+  - The physical loss enforces compliance with real-world dynamics, reducing overfitting to noisy or limited data.
+  - The inclusion of physical laws ensures the model generalizes well, even when trained on a sparse subset of data points.
+- **Noise Mitigation**:
+  - By regularizing predictions with physical equations, the model ensures smooth and realistic trajectories.
+
+---
