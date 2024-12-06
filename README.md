@@ -248,10 +248,10 @@ data = generate_trajectory_data(v_0=40, theta=60)  # Initial velocity 40 m/s, an
 - theta: Angle of projection in degrees (default: 45°).
 5. Run the Notebook
 
-1. **Generate Data**: Simulate the shuttlecock's trajectory using physical parameters.  
-2. **Train on All Data**: Train the PiNN with the full dataset.  
-3. **Train on 20 Points**: Test the PiNN's efficiency with only 20 representative points.( you can change the number of points) 
-4. **Visualize Results**: Compare true and predicted trajectories, analyze loss curves, and evaluate accuracy.  
+- **Generate Data**: Simulate the shuttlecock's trajectory using physical parameters.  
+- **Train on All Data**: Train the PiNN with the full dataset.  
+- **Train on 20 Points**: Test the PiNN's efficiency with only 20 representative points.( you can change the number of points) 
+- **Visualize Results**: Compare true and predicted trajectories, analyze loss curves, and evaluate accuracy.  
 
 
 ## Conclusion
