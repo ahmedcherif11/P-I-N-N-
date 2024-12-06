@@ -63,7 +63,7 @@ The PINN architecture combines:
 2. **Physics Loss**:
    Ensures compliance with Newtonian mechanics:
    $$
-   \text{Physics Loss} = \| a_x - f_x \|^2 + \| a_y - f_y \|^2
+   Physics Loss= \| a_x - f_x \|^2 + \| a_y - f_y \|^2
    $$
    where:
    - $a_x, a_y$: Predicted accelerations (second derivatives computed via autograd).
