@@ -35,7 +35,7 @@ A differential equation governs the shuttlecock's motion:
 
 **Generated Data**: The simulation records $(x, y, v_x, v_y)$ for every time step $t$ by solving these equations iteratively. The shuttlecock's motion stops when its vertical position $y$ becomes negative.
 
-![generated trajectory ](images/Shuttlecock 2D Trajectory with Air Resistance.png)
+![generated trajectory ](images/Shuttlecock-2D-Trajectory-with-Air-Resistance.png)
 
 
 ---
