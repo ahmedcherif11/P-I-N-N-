@@ -55,29 +55,29 @@ The PINN architecture combines:
 
 #### Loss Function
 1. **Data Loss**:
-   Measures the difference between predicted (\( \hat{y} \)) and actual (\( y \)) trajectory points:
-   \[
+   Measures the difference between predicted ($\hat{y}$) and actual ($y$) trajectory points:
+   $$
    \text{Data Loss} = \frac{1}{N} \sum_{i=1}^N \|\hat{y}_i - y_i\|^2
-   \]
+   $$
 
 2. **Physics Loss**:
    Ensures compliance with Newtonian mechanics:
-   \[
+   $$
    \text{Physics Loss} = \| a_x - f_x \|^2 + \| a_y - f_y \|^2
-   \]
+   $$
    where:
-   - \( a_x, a_y \): Predicted accelerations (second derivatives computed via autograd).
-   - \( f_x, f_y \): Forces acting on the shuttlecock:
-     \[
+   - $a_x, a_y$: Predicted accelerations (second derivatives computed via autograd).
+   - $f_x, f_y$: Forces acting on the shuttlecock:
+     $$
      f_x = -C_d \cdot v \cdot v_x, \quad f_y = -g - C_d \cdot v \cdot v_y
-     \]
-   - \( C_d \): Drag coefficient, \( g \): Gravity, \( v \): Speed magnitude.
+     $$
+   - $C_d$: Drag coefficient, $g$: Gravity, $v$: Speed magnitude.
 
 3. **Total Loss**:
-   Combines data and physics losses with a regularization term (\( \lambda_\text{reg} \)):
-   \[
+   Combines data and physics losses with a regularization term ($\lambda_\text{reg}$):
+   $$
    \text{Total Loss} = \text{Data Loss} + \lambda_\text{reg} \cdot \text{Physics Loss}
-   \]
+   $$
 
 ### Integration of Physical Loss
 - **Design Rationale**:
@@ -85,5 +85,3 @@ The PINN architecture combines:
   - The inclusion of physical laws ensures the model generalizes well, even when trained on a sparse subset of data points.
 - **Noise Mitigation**:
   - By regularizing predictions with physical equations, the model ensures smooth and realistic trajectories.
-
----
