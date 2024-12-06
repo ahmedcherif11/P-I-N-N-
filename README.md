@@ -246,7 +246,7 @@ data = generate_trajectory_data(v_0=40, theta=60)  # Initial velocity 40 m/s, an
 ```
 - v_0: Initial velocity of the shuttlecock in meters per second (default: 30 m/s).
 - theta: Angle of projection in degrees (default: 45°).
-5. Run the Notebook
+5. Run the Notebook:Execute all cells in the notebook to:
 
 - **Generate Data**: Simulate the shuttlecock's trajectory using physical parameters.  
 - **Train on All Data**: Train the PiNN with the full dataset.  
